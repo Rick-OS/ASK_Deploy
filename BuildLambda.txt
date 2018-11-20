@@ -1,0 +1,6 @@
+del .\build\skill.zip
+timeout /t 5 /NOBREAK
+7z a -tzip .\build\skill.zip <PATH TO PYTHON FILES>
+
+7z a -tzip .\build\skill.zip -i!.\ENV\Lib\site-packages\ask* .\ENV\Lib\site-packages\requests* .\ENV\Lib\site-packages\urllib3* .\ENV\Lib\site-packages\chardet* .\ENV\Lib\site-packages\certifi* .\ENV\Lib\site-packages\idna*
+aws lambda update-function-code --function-name <LAMBDA FUNCTION> --zip-file fileb://build/skill.zip --profile <PROFILE>
